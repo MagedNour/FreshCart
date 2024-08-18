@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthContext.jsx';
 
 export default function Navbar(props) {
     const [isOpen, setIsOpen] = useState(false);
+    let { userToken, setUserToken } = useContext(AuthContext)
+    console.log(userToken);
+    const navigate = useNavigate();
+
+    function signOut() {
+        setUserToken("")
+        localStorage.removeItem("token")
+        navigate('/login')
+    }
 
     return (
         <header className="bg-gray-800 fixed inset-x-0 z-50">
@@ -13,8 +23,7 @@ export default function Navbar(props) {
                         <div className="text-white font-bold text-xl me-24 brand">
                             <NavLink to={"/"}>FreshCart</NavLink>
                         </div>
-
-                        <div className="hidden lg:block">
+                        {userToken && <div className="hidden lg:block">
                             <ul className="flex items-center space-x-8">
                                 <li><NavLink to={"/"} className="text-white">Home</NavLink></li>
                                 <li><NavLink to={"/products"} className="text-white">Products</NavLink></li>
@@ -22,7 +31,8 @@ export default function Navbar(props) {
                                 <li><NavLink to={"/brands"} className="text-white">Brands</NavLink></li>
                                 <li><NavLink to={"/cart"} className="text-white">Cart</NavLink></li>
                             </ul>
-                        </div>
+                        </div>}
+
 
                     </div>
 
@@ -54,10 +64,15 @@ export default function Navbar(props) {
                         </div>
 
                         <div className='hidden lg:flex'>
-                            <li><NavLink to={"/login"} className="text-white">Login</NavLink></li>
-                            <li><NavLink to={"/register"} className="text-white">Register</NavLink></li>
-                            <li><Link className="text-white">SignOut</Link></li>
+                            {!userToken && <>
+                                <ul className='flex space-x-3 ms-3'>
+                                    <li><NavLink to={"/login"} className="text-white">Login</NavLink></li>
+                                    <li><NavLink to={"/register"} className="text-white">Register</NavLink></li>
+                                </ul>
+                            </>}
+
                         </div>
+                        {userToken && <ul> <li><button onClick={signOut} className="text-white">SignOut</button></li> </ul>}
 
                     </div>
                 </div>
@@ -66,11 +81,17 @@ export default function Navbar(props) {
                     }`}
                 >
                     <ul className="mt-4 space-y-4">
-                        <li><NavLink to={"/"} className="block px-4 py-2 text-white bg-gray-900 rounded">Home</NavLink></li>
-                        <li><NavLink to={"/products"} className="block px-4 py-2 text-white bg-gray-900 rounded">Products</NavLink></li>
-                        <li><NavLink to={"/categories"} className="block px-4 py-2 text-white bg-gray-900 rounded">Categories</NavLink></li>
-                        <li><NavLink to={"/brands"} className="block px-4 py-2 text-white bg-gray-900 rounded">Brands</NavLink></li>
-                        <li><NavLink to={"/cart"} className="block px-4 py-2 text-white bg-gray-900 rounded">Cart</NavLink></li>
+                        {userToken && <>
+                            <li><NavLink to={"/"} className="block px-4 py-2 text-white bg-gray-900 rounded">Home</NavLink></li>
+                            <li><NavLink to={"/products"} className="block px-4 py-2 text-white bg-gray-900 rounded">Products</NavLink></li>
+                            <li><NavLink to={"/categories"} className="block px-4 py-2 text-white bg-gray-900 rounded">Categories</NavLink></li>
+                            <li><NavLink to={"/brands"} className="block px-4 py-2 text-white bg-gray-900 rounded">Brands</NavLink></li>
+                            <li><NavLink to={"/cart"} className="block px-4 py-2 text-white bg-gray-900 rounded">Cart</NavLink></li>
+                        </>}
+                        {!userToken && <>
+                            <li><NavLink to={"/login"} className="block px-4 py-2 text-white bg-gray-900 rounded">Login</NavLink></li>
+                            <li><NavLink to={"/register"} className="block px-4 py-2 text-white  bg-gray-900 rounded">Register</NavLink></li>
+                        </>}
                     </ul>
                 </div>
             </nav>

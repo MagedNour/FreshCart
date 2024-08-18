@@ -41,11 +41,8 @@ export default function Footer(props) {
 
                 <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700"/>
 
-                    <div className="flex items-center justify-between">
-                        <a href="#">
-                            <img className="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt=""/>
-                        </a>
-
+                    <div className="flex items-center justify-end">
+                        
                         <div className="flex -mx-2">
                             <a href="#" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"

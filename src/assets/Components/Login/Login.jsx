@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { AuthContext } from '../../../Contexts/AuthContext.jsx';
 
 export default function Login(props) {
 
@@ -10,6 +11,9 @@ export default function Login(props) {
     const [errorMsg, setErrMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
     const navigate = useNavigate()
+    let {setUserToken} = useContext(AuthContext)
+
+   
 
     const validationSchema = Yup.object({
         email: Yup.string().required("Email is required").email("Please Enter a valid Email"),
@@ -25,8 +29,9 @@ export default function Login(props) {
         setSuccessMsg("")
         await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin", values).then(({ data }) => {
             setSuccessMsg(data.message)
-            console.log(data);
             setIsLoading(false)
+            setUserToken(data.token); //userToken context
+            localStorage.setItem("token", data.token)
             setTimeout(() => {
                 navigate("/")
             }, 500);
@@ -48,7 +53,7 @@ export default function Login(props) {
     return (
         <>
 
-            <div className='min-h-screen flex justify-center items-center'>
+            <div className='py-12 flex justify-center items-center'>
                 <div className="w-full md:w-1/2 mx-auto  bg-white dark:bg-gray-800 rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
                     <h1 className="text-xl font-bold text-center text-gray-700 dark:text-gray-200 mb-8">Welcome to FreshCart</h1>
 
