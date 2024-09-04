@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
 
-.active{
-    @apply font-bold text-yellow-700
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 }
+
+.active {
+    @apply font-bold text-green-300
+}
+
+.slick-prev::before, .slick-next::before {
+    color: black !important;
+}
+
+

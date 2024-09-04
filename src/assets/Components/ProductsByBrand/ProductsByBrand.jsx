@@ -5,13 +5,15 @@ import { Helmet } from 'react-helmet';
 import ProductCard from '../ProductCard/ProductCard.jsx';
 import LoadingScreen from '../LoadingScreen/LoadingScreen.jsx';
 import { WishContext } from '../../../Contexts/wishListContext.jsx';
+import { useParams } from 'react-router-dom';
 
-export default function Products() {
+export default function ProductsByBrand() {
 
     let { wishedProducts, setWishedProducts } = useContext(WishContext)
+    let{id} = useParams();
 
     function getProducts() {
-        return axios.get('https://ecommerce.routemisr.com/api/v1/products')
+        return axios.get('https://ecommerce.routemisr.com/api/v1/products?brand='+id)
     }
 
 

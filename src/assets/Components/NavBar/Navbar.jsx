@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../Contexts/AuthContext.jsx';
+import { AuthContext } from '../../../Contexts/authContext.jsx';
+import logo from '/public/logo.svg'
+import { CartCountContext } from '../../../Contexts/cartCountContext.jsx';
 
 export default function Navbar(props) {
     const [isOpen, setIsOpen] = useState(false);
     let { userToken, setUserToken } = useContext(AuthContext)
-    console.log(userToken);
     const navigate = useNavigate();
+    let { cartCount } = useContext(CartCountContext);
 
     function signOut() {
         setUserToken("")
@@ -21,7 +23,9 @@ export default function Navbar(props) {
 
                     <div className="flex">
                         <div className="text-white font-bold text-xl me-24 brand">
-                            <NavLink to={"/"}>FreshCart</NavLink>
+                            <Link to={"/"} className='flex'>
+                                <img className='w-6 me-2' src={logo} alt="logo" />
+                                FreshCart</Link>
                         </div>
                         {userToken && <div className="hidden lg:block">
                             <ul className="flex items-center space-x-8">
@@ -29,7 +33,14 @@ export default function Navbar(props) {
                                 <li><NavLink to={"/products"} className="text-white">Products</NavLink></li>
                                 <li><NavLink to={"/categories"} className="text-white">Categories</NavLink></li>
                                 <li><NavLink to={"/brands"} className="text-white">Brands</NavLink></li>
-                                <li><NavLink to={"/cart"} className="text-white">Cart</NavLink></li>
+                                <li><NavLink to={"/cart"} className="text-white relative">
+                                    Cart
+                                    <i className="fa-solid fa-cart-shopping ms-1"></i>
+                                    <span className="absolute -end-5 -top-3  bg-green-500 text-white text-xs font-medium me-2 px-1 py-0.5 rounded-lg dark:bg-gray-700 dark:text-green-400 border border-green-400">{cartCount}</span>
+
+                                </NavLink></li>
+                                <li><NavLink to={"/wishList"} className="text-white">Wish List</NavLink></li>
+
                             </ul>
                         </div>}
 
@@ -55,11 +66,11 @@ export default function Navbar(props) {
                         </div>
 
                         <div className="social-media text-white hidden lg:block space-x-2">
-                            <i className="hover:text-yellow-600 fa-brands fa-facebook-f"></i>
-                            <i className="hover:text-yellow-600 fa-brands fa-twitter"></i>
-                            <i className="hover:text-yellow-600 fa-brands fa-linkedin"></i>
-                            <i className="hover:text-yellow-600 fa-brands fa-youtube"></i>
-                            <i className="hover:text-yellow-600 fa-brands fa-tiktok"></i>
+                            <i className="cursor-pointer hover:text-green-300 fa-brands fa-facebook-f"></i>
+                            <i className="cursor-pointer hover:text-green-300 fa-brands fa-twitter"></i>
+                            <i className="cursor-pointer hover:text-green-300 fa-brands fa-linkedin"></i>
+                            <i className="cursor-pointer hover:text-green-300 fa-brands fa-youtube"></i>
+                            <i className="cursor-pointer hover:text-green-300 fa-brands fa-tiktok"></i>
 
                         </div>
 
@@ -72,7 +83,14 @@ export default function Navbar(props) {
                             </>}
 
                         </div>
-                        {userToken && <ul> <li><button onClick={signOut} className="text-white">SignOut</button></li> </ul>}
+                        {userToken && <ul className='flex'>
+                            <li><button onClick={signOut} className="text-white ms-3 hover:text-green-300">SignOut</button></li>
+                            <li><NavLink to={"/cart"} className="text-white ms-3 relative lg:hidden">
+                                <i className="fa-solid fa-cart-shopping ms-1"></i>
+                                <span className="absolute -end-5 -top-3  bg-green-500 text-white text-xs font-medium me-2 px-1 py-0.5 rounded-lg dark:bg-gray-700 dark:text-green-400 border border-green-400">{cartCount}</span>
+
+                            </NavLink></li>
+                        </ul>}
 
                     </div>
                 </div>

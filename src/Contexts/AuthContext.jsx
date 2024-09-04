@@ -6,14 +6,7 @@ export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
 
-    const [userToken, setUserToken] = useState("");
-
-    useEffect(() => {
-        if (localStorage.getItem("token") != null) {
-            setUserToken(localStorage.getItem("token"))
-            console.log("Hello");
-        }
-    }, [])
+    const [userToken, setUserToken] = useState(localStorage.getItem("token") ?? "");
 
 
     return <AuthContext.Provider value={{ userToken, setUserToken }}>

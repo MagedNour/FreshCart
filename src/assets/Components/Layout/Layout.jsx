@@ -7,7 +7,7 @@ export default function Layout(props) {
     return (
         <>
             <Navbar />
-            <div className='py-24 container mx-auto'>
+            <div className='py-24'>
                 <Outlet />
             </div>
             <Footer />
