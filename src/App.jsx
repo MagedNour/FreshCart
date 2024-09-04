@@ -36,7 +36,7 @@ function App() {
     {
       path: "/FreshCart", element: <Layout />,
       children: [
-        { path: "/FreshCart", element: <Home /> },
+        { path: "", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "forgotMyPassword", element: <ForgotMyPassword /> },

@@ -33,8 +33,9 @@ export default function Login(props) {
             setUserToken(data.token); //userToken context
             localStorage.setItem("token", data.token)
             setTimeout(() => {
-                if (location.pathname == "/login") {
-                    navigate("/")
+                console.log(location.pathname);
+                if (location.pathname == "/FreshCart/login") {
+                    navigate("/FreshCart")
                 } else {
                     navigate(location.pathname)
                 }
