@@ -85,7 +85,7 @@ export default function Navbar(props) {
                         </div>
                         {userToken && <ul className='flex'>
                             <li><button onClick={signOut} className="text-white ms-3 hover:text-green-300">SignOut</button></li>
-                            <li><NavLink to={"/cart"} className="text-white ms-3 relative lg:hidden">
+                            <li><NavLink to={"cart"} className="text-white ms-3 relative lg:hidden">
                                 <i className="fa-solid fa-cart-shopping ms-1"></i>
                                 <span className="absolute -end-5 -top-3  bg-green-500 text-white text-xs font-medium me-2 px-1 py-0.5 rounded-lg dark:bg-gray-700 dark:text-green-400 border border-green-400">{cartCount}</span>
 
