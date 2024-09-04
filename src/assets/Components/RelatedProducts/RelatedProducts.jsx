@@ -63,7 +63,7 @@ export default function RelatedProducts({ products }) {
                                 </button>
                             </div>
                             <div className="px-5 py-3">
-                                <Link to={"/productDetails/" + product._id}>
+                                <Link to={"/FreshCart/productDetails/" + product._id}>
                                     <h3 className="text-gray-700 uppercase line-clamp-1 hover:font-bold">{product.title}</h3>
                                 </Link>
                                 <span className="text-gray-500 mt-2">${product.price}</span>
