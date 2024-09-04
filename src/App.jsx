@@ -34,7 +34,9 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "", element: <Layout />, children: [
+      path: "/FreshCart",
+      element: <Layout />,
+      children: [
         { index: true, element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
@@ -51,10 +53,9 @@ function App() {
         { path: "productDetails/:id", element: <ProtectedRoute> <ProductDetails /> </ProtectedRoute> },
         { path: "brands/products/:id", element: <ProtectedRoute> <ProductsByBrand /> </ProtectedRoute> },
         { path: "*", element: <Notfound /> },
-
       ]
     }
-  ])
+  ]);
 
 
   return (
