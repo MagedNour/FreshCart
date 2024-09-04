@@ -36,7 +36,7 @@ export default function Brands(props) {
                         {data?.data.data?.map((brand, i) => {
                             return <div key={i} className="w-full max-w-sm mx-auto  overflow-hidden p-1">
                                 <div className="shadow-md rounded-md hover:shadow-green-200">
-                                    <Link to={"/brands/products/"+brand._id}>
+                                    <Link to={"products/"+brand._id}>
                                         <div className="flex items-end justify-end h-40 w-full bg-cover bg-no-repeat bg-center cursor-pointer" style={{ "backgroundImage": `url(${brand.image})` }}>
                                         </div>
                                     </Link>

@@ -32,7 +32,7 @@ export default function ProductCard({ product, wishedProducts, setWishedProducts
             setCartCount(count)
             setIsLoading(false)
         } else {
-            navigate('/login')
+            navigate('login')
         }
     }
 
@@ -44,7 +44,7 @@ export default function ProductCard({ product, wishedProducts, setWishedProducts
             setWishedProducts([...wishedProducts, productId]); //update Context
             setIsLoading(false)
         } else {
-            navigate('/login')
+            navigate('login')
         }
     }
 
@@ -68,7 +68,7 @@ export default function ProductCard({ product, wishedProducts, setWishedProducts
                 transition: Bounce,
             });
         } else {
-            navigate('/login')
+            navigate('login')
         }
     }
 
@@ -79,11 +79,11 @@ export default function ProductCard({ product, wishedProducts, setWishedProducts
             {isLoading && <SpinnerLoadingScreen />}
 
             <div className="bg-white shadow-md min-h-full rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-green-300 transition-colors duration-150">
-                <Link to={"/productDetails/" + product._id}>
+                <Link to={"productDetails/" + product._id}>
                     <img className="rounded-t-lg p-8" src={product.imageCover} alt="product image" />
                 </Link>
                 <div className="px-5 pb-5">
-                    <Link to={"/productDetails/" + product._id}>
+                    <Link to={"productDetails/" + product._id}>
                         <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white line-clamp-1">{product.title}</h3>
                     </Link>
                     <p className='line-clamp-2'>{product.description}</p>
