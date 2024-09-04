@@ -34,9 +34,9 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/", element: <Layout />,
+      path: "/FreshCart", element: <Layout />,
       children: [
-        { path: "", element: <Home /> },
+        { path: "/FreshCart", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "forgotMyPassword", element: <ForgotMyPassword /> },

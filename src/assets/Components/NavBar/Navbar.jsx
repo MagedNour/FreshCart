@@ -13,7 +13,7 @@ export default function Navbar(props) {
     function signOut() {
         setUserToken("")
         localStorage.removeItem("token")
-        navigate('/login')
+        navigate('login')
     }
 
     return (
@@ -23,23 +23,23 @@ export default function Navbar(props) {
 
                     <div className="flex">
                         <div className="text-white font-bold text-xl me-24 brand">
-                            <Link to={"/"} className='flex'>
+                            <Link to={"/FreshCart"} className='flex'>
                                 <img className='w-6 me-2' src={logo} alt="logo" />
                                 FreshCart</Link>
                         </div>
                         {userToken && <div className="hidden lg:block">
                             <ul className="flex items-center space-x-8">
-                                <li><NavLink to={"/"} className="text-white">Home</NavLink></li>
-                                <li><NavLink to={"/products"} className="text-white">Products</NavLink></li>
-                                <li><NavLink to={"/categories"} className="text-white">Categories</NavLink></li>
-                                <li><NavLink to={"/brands"} className="text-white">Brands</NavLink></li>
-                                <li><NavLink to={"/cart"} className="text-white relative">
+                                <li><NavLink to={""} className="text-white">Home</NavLink></li>
+                                <li><NavLink to={"products"} className="text-white">Products</NavLink></li>
+                                <li><NavLink to={"categories"} className="text-white">Categories</NavLink></li>
+                                <li><NavLink to={"brands"} className="text-white">Brands</NavLink></li>
+                                <li><NavLink to={"cart"} className="text-white relative">
                                     Cart
                                     <i className="fa-solid fa-cart-shopping ms-1"></i>
                                     <span className="absolute -end-5 -top-3  bg-green-500 text-white text-xs font-medium me-2 px-1 py-0.5 rounded-lg dark:bg-gray-700 dark:text-green-400 border border-green-400">{cartCount}</span>
 
                                 </NavLink></li>
-                                <li><NavLink to={"/wishList"} className="text-white">Wish List</NavLink></li>
+                                <li><NavLink to={"wishList"} className="text-white">Wish List</NavLink></li>
 
                             </ul>
                         </div>}
@@ -77,8 +77,8 @@ export default function Navbar(props) {
                         <div className='hidden lg:flex'>
                             {!userToken && <>
                                 <ul className='flex space-x-3 ms-3'>
-                                    <li><NavLink to={"/login"} className="text-white">Login</NavLink></li>
-                                    <li><NavLink to={"/register"} className="text-white">Register</NavLink></li>
+                                    <li><NavLink to={"login"} className="text-white">Login</NavLink></li>
+                                    <li><NavLink to={"register"} className="text-white">Register</NavLink></li>
                                 </ul>
                             </>}
 
@@ -100,15 +100,15 @@ export default function Navbar(props) {
                 >
                     <ul className="mt-4 space-y-4">
                         {userToken && <>
-                            <li><NavLink to={"/"} className="block px-4 py-2 text-white bg-gray-900 rounded">Home</NavLink></li>
-                            <li><NavLink to={"/products"} className="block px-4 py-2 text-white bg-gray-900 rounded">Products</NavLink></li>
-                            <li><NavLink to={"/categories"} className="block px-4 py-2 text-white bg-gray-900 rounded">Categories</NavLink></li>
-                            <li><NavLink to={"/brands"} className="block px-4 py-2 text-white bg-gray-900 rounded">Brands</NavLink></li>
-                            <li><NavLink to={"/cart"} className="block px-4 py-2 text-white bg-gray-900 rounded">Cart</NavLink></li>
+                            <li><NavLink to={""} className="block px-4 py-2 text-white bg-gray-900 rounded">Home</NavLink></li>
+                            <li><NavLink to={"products"} className="block px-4 py-2 text-white bg-gray-900 rounded">Products</NavLink></li>
+                            <li><NavLink to={"categories"} className="block px-4 py-2 text-white bg-gray-900 rounded">Categories</NavLink></li>
+                            <li><NavLink to={"brands"} className="block px-4 py-2 text-white bg-gray-900 rounded">Brands</NavLink></li>
+                            <li><NavLink to={"cart"} className="block px-4 py-2 text-white bg-gray-900 rounded">Cart</NavLink></li>
                         </>}
                         {!userToken && <>
-                            <li><NavLink to={"/login"} className="block px-4 py-2 text-white bg-gray-900 rounded">Login</NavLink></li>
-                            <li><NavLink to={"/register"} className="block px-4 py-2 text-white  bg-gray-900 rounded">Register</NavLink></li>
+                            <li><NavLink to={"login"} className="block px-4 py-2 text-white bg-gray-900 rounded">Login</NavLink></li>
+                            <li><NavLink to={"register"} className="block px-4 py-2 text-white  bg-gray-900 rounded">Register</NavLink></li>
                         </>}
                     </ul>
                 </div>
