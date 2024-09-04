@@ -31,7 +31,7 @@ export default function ShippingAddress(props) {
                 token: localStorage.getItem("token"),
             },
             params: {
-                url: "http://localhost:5173"
+                url: "https://magednour.github.io/FreshCart/"
             }
         }).then(({ data }) => {
             setIsLoading(false)
