@@ -105,6 +105,7 @@ export default function Navbar(props) {
                             <li><NavLink to={"categories"} className="block px-4 py-2 text-white bg-gray-900 rounded">Categories</NavLink></li>
                             <li><NavLink to={"brands"} className="block px-4 py-2 text-white bg-gray-900 rounded">Brands</NavLink></li>
                             <li><NavLink to={"cart"} className="block px-4 py-2 text-white bg-gray-900 rounded">Cart</NavLink></li>
+                            <li><NavLink to={"wishList"} className="block px-4 py-2 text-white bg-gray-900 rounded">Wish List</NavLink></li>
                         </>}
                         {!userToken && <>
                             <li><NavLink to={"login"} className="block px-4 py-2 text-white bg-gray-900 rounded">Login</NavLink></li>
